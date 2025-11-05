@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation - Online Reservation System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<div class="container">
+    <header>
+        <div class="logo">
+            <i class="fas fa-train"></i>
+            <h1>RailReserve</h1>
+        </div>
+        <nav>
+            <a href="index" class="nav-link">Home</a>
+            <a href="cancellation" class="nav-link">Cancellation</a>
+            <a href="#" id="logoutBtn" class="btn btn-secondary">Logout</a>
+        </nav>
+    </header>
+
+    <main class="reservation-main">
+        <div class="page-header">
+            <h2><i class="fas fa-ticket-alt"></i> Make Reservation</h2>
+            <p>Fill in the details below to book your train ticket</p>
+        </div>
+        <h3 th:text="${issue}"></h3>
+        <form  th:action="@{book}" method="post"  id="reservationForm" class="reservation-form">
+            <div class="form-section">
+                <h3>Personal Details</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="fullName">Full Name *</label>
+                        <input type="text" id="fullName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age *</label>
+                        <input type="number" id="age" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="gender">Gender *</label>
+                        <select id="gender" required>
+                            <option value="">Select</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>Journey Details</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="trainNumber">Train Number *</label>
+                        <input name="trainNumber" type="text" id="trainNumber" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="trainName">Train Name</label>
+                        <input name="trainName" type="text" id="trainName">
+                    </div>
+                    <div class="form-group">
+                        <label for="classType">Class Type *</label>
+                        <select name="coach" id="classType" required>
+                            <option  value="sleeper">Select Class</option>
+                            <option  value="first">First Class</option>
+                            <option  value="second">Second Class</option>
+                            <option value="sleeper">Sleeper</option>
+                            <option  value="ac">AC</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="journeyDate">Date of Journey *</label>
+                        <input name="journeyDate" type="date" id="journeyDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="fromPlace">From *</label>
+                        <input name="fromjourney" type="text" id="fromPlace" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="toPlace">To *</label>
+                        <input name="endjourney" type="text" id="toPlace" required>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-large">Book Ticket</button>
+        </form>
+
+    </main>
+</div>
+</body>
+</html>

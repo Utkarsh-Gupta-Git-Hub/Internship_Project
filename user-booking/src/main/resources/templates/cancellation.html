@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancellation - Online Reservation System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<div class="container">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>PNR</th>
+            <th>USER name</th>
+            <th>Date</th>
+            <th>Source</th>
+            <th>Destination</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="ob:${book}">
+            <td th:text="${ob.id}"></td>
+            <td th:text="${ob.PNR}"></td>
+            <td th:text="${ob.userInfo.id}"></td>
+            <td th:text="${ob.journeyDate}"></td>
+            <td th:text="${ob.fromjourney}"></td>
+            <td th:text="${ob.endjourney}"></td>
+<!--            <td><a th:action="@{/cancelBooking/{id}=${ob.id}" method="post"  class="btn btn-primary ">Cancel</a>/></td>-->
+            <td>
+                <form th:action="@{/cancelBooking/{id}(id=${ob.id})}" method="post">
+                    <button type="submit" class="btn btn-primary">Cancel</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
